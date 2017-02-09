@@ -1,6 +1,6 @@
 <template>
   <div class="logo-wrapper">
-    <div class="logo">
+    <div class="logo-box">
       <span class="large">A</span><span class="small">b</span>
     </div>
   </div>
@@ -21,10 +21,11 @@ export default {
   .logo-wrapper {
     margin: 0 auto;
     font: 50px/1.6 Arial, sans-serif;
-    .logo {
+    .logo-box {
       width: 1.6em;
       height: 1.6em;
       padding: .1em;
+      margin: 0 auto;
       font-weight: bolder;
       color: #41B883;
       border: .1em solid #41B883;
