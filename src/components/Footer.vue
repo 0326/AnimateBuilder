@@ -1,5 +1,10 @@
 <template>
   <div class="footer-wrapper">
+    <h2>Awesome Works</h2>
+    <ul>
+      <li><a href="http://animateplus.com/easing-visualizer/#">Animate Plus</a></li>
+      <li><a href="https://daneden.github.io/animate.css/#">Animate.css</a></li>
+    </ul>
     <h2>Friendly Links</h2>
     <ul>
       <li><a href="http://vuejs.org/" target="_blank">Vue.js</a></li>
