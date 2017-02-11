@@ -1,24 +1,37 @@
-import bounce from './attention_seekers/bounce.js'
+import Ani from './animation.js'
+
+let aniBase = `.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}`
+
+let aniInfinite = `
+.animated.infinite {
+  animation-iteration-count: infinite;
+}`
+
+// 将Ani对象转化为二层数组展示
+let aniList = []
+for (let aniTypes in Ani) {
+  let item = {
+    type: aniTypes,
+    list: []
+  }
+  for(let animate in Ani[aniTypes]) {
+    item.list.push({
+      name: animate,
+      cssCode: Ani[aniTypes][animate]
+    })
+  }
+  aniList.push(item)
+}
+// console.log(aniList)
 
 export default {
-  base: `.animated {
-    animation-duration: 1s;
-    animation-fill-mode: both;
+  aniBase,
+  aniInfinite,
+  aniList,
+  getAniCode (type, name) {
+    return Ani[type][name]
   }
-
-  .animated.infinite {
-    animation-iteration-count: infinite;
-  }
-
-  .animated.hinge {
-    animation-duration: 2s;
-  }
-
-  .animated.flipOutX,
-  .animated.flipOutY,
-  .animated.bounceIn,
-  .animated.bounceOut {
-    animation-duration: .75s;
-  }`,
-  bounce
 }

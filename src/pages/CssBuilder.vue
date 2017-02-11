@@ -16,7 +16,7 @@
         <ani-list></ani-list>
       </div>
     </div>
-    <cfooter></cfooter>
+    <cfooter class="footer"></cfooter>
   </div>
 </template>
 
@@ -70,6 +70,9 @@ a {
     width: 100%;
     text-align: center;
     line-height: 80px;
+  }
+  .footer {
+    display: none;
   }
 }
 .flex-wrapper {

@@ -28,8 +28,8 @@ export default {
   created () {
     bus.$on('cssBuilderAniSelected', event => {
       const $0 = $('#J_AniLogo')
-      util.aniCss($0, event)
-      console.log(document.getElementById('J_AniLogo').style)
+      util.aniCss($0, event.aniName)
+      // console.log(event)
     })
   },
   components: { Logo }

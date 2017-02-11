@@ -25,4 +25,5 @@
 
 .hinge {
   animation-name: hinge;
+  animation-duration: 2s;
 }

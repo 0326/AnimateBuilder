@@ -3,7 +3,7 @@
     <div class="ani-list-content" v-for="anis in aniList">
       <div class="ani-type-name">{{anis.type}}</div>
       <ul class="anis-list">
-        <li v-for="ani in anis.list" v-on:click.capture="aniClick">{{ani}}</li>
+        <li v-for="ani in anis.list" v-on:click.capture="aniClick" :type="anis.type">{{ani.name}}</li>
       </ul>
     </div>
   </div>
@@ -12,150 +12,27 @@
 <script>
 import bus from '../../eventBus.js'
 import util from '../../util.js'
+import animation from '../../assets/animation-css/index.js'
+
 export default {
   name: 'ani-list',
   methods: {
     aniClick (e) {
       const $0 = $(e.target)
+      const aniType = $0.attr('type')
       const aniName = $0.text()
+      const aniCode = animation.getAniCode(aniType, aniName)
       util.aniCss($0, 'pulse')
-      bus.$emit('cssBuilderAniSelected', aniName)
+      bus.$emit('cssBuilderAniSelected', {
+        aniName,
+        aniType,
+        aniCode
+      })
     }
   },
   data () {
     return {
-      aniList: [{
-        type: 'Attention Seekers',
-        list: [
-          'bounce',
-          'flash',
-          'pulse',
-          'rubberBand',
-          'shake',
-          'headShake',
-          'swing',
-          'tada',
-          'wobble',
-          'jello'
-        ]
-      }, {
-        type: 'Bouncing Entrances',
-        list: [
-          'bounceIn',
-          'bounceInDown',
-          'bounceInLeft',
-          'bounceInRight',
-          'bounceInUp'
-        ]
-      }, {
-        type: 'Bouncing Exits',
-        list: [
-          'bounceOut',
-          'bounceOutDown',
-          'bounceOutLeft',
-          'bounceOutRight',
-          'bounceOutUp'
-        ]
-      }, {
-        type: 'Fading Entrances',
-        list: [
-          'fadeIn',
-          'fadeInDown',
-          'fadeInDownBig',
-          'fadeInLeft',
-          'fadeInLeftBig',
-          'fadeInRight',
-          'fadeInRightBig',
-          'fadeInUp',
-          'fadeInUpBig'
-        ]
-      }, {
-        type: 'Fading Exits',
-        list: [
-          'fadeOut',
-          'fadeOutDown',
-          'fadeOutDownBig',
-          'fadeOutLeft',
-          'fadeOutLeftBig',
-          'fadeOutRight',
-          'fadeOutRightBig',
-          'fadeOutUp',
-          'fadeOutUpBig'
-        ]
-      }, {
-        type: 'Flippers',
-        list: [
-          'flipInX',
-          'flipInY',
-          'flipOutX',
-          'flipOutY'
-        ]
-      }, {
-        type: 'lightSpeed',
-        list: [
-          'lightSpeedIn',
-          'lightSpeedOut'
-        ]
-      }, {
-        type: 'Rotating Entrances',
-        list: [
-          'rotateIn',
-          'rotateInDownLeft',
-          'rotateInDownRight',
-          'rotateInUpLeft',
-          'rotateInUpRight'
-        ]
-      }, {
-        type: 'Rotating Exits',
-        list: [
-          'rotateOut',
-          'rotateOutDownLeft',
-          'rotateOutDownRight',
-          'rotateOutUpLeft',
-          'rotateOutUpRight'
-        ]
-      }, {
-        type: 'Zooming Entrances',
-        list: [
-          'zoomIn',
-          'zoomInDown',
-          'zoomInLeft',
-          'zoomInRight',
-          'zoomInUp'
-        ]
-      }, {
-        type: 'Zooming Exits',
-        list: [
-          'zoomOut',
-          'zoomOutDown',
-          'zoomOutLeft',
-          'zoomOutRight',
-          'zoomOutUp'
-        ]
-      }, {
-        type: 'Sliding Entrances',
-        list: [
-          'slideInDown',
-          'slideInLeft',
-          'slideInRight',
-          'slideInUp'
-        ]
-      }, {
-        type: 'Sliding Exits',
-        list: [
-          'slideOutDown',
-          'slideOutLeft',
-          'slideOutRight',
-          'slideOutUp'
-        ]
-      }, {
-        type: 'Specials',
-        list: [
-          'hinge',
-          'rollIn',
-          'rollOut'
-        ]
-      }]
+      aniList: animation.aniList
     }
   }
 }
