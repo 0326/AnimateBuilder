@@ -1,6 +1,9 @@
 # animate-builder
-
+Home page: <http://quanfeng.tech/AnimateBuilder/home.html>
 > animate builder based on Vue.js and Velocity.js
+
+![](http://7xp4vm.com1.z0.glb.clouddn.com/Animation_Builder.jpg)
+
 
 ## Build Setup
 

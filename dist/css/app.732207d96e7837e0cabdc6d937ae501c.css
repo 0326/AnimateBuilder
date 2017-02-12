@@ -279,7 +279,7 @@ a[data-v-476acb22] {
 html,
 body,
 #app,
-.css-builder-page,
+.css-picker-page,
 .flex-wrapper {
   height: 100%;
   min-height: 600px;
@@ -295,23 +295,16 @@ li {
 a {
   color: #42b983;
 }
-.css-builder-page {
+.css-picker-page {
   position: relative;
   margin: 0 auto;
 }
-.css-builder-page .head-menu {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  line-height: 80px;
-}
-.css-builder-page .footer {
+.css-picker-page .footer {
   display: none;
 }
 .flex-wrapper {
   display: -ms-flexbox;
   display: flex;
-  padding-top: 80px;
   box-sizing: border-box;
 }
 .flex-wrapper .flex-1 {
@@ -336,6 +329,33 @@ a {
   color: #fff;
   text-align: center;
   background-color: #35495E;
+}
+
+.app-menu-wrapper[data-v-59d589ee] {
+  height: 80px;
+}
+.head-menu[data-v-59d589ee] {
+  position: absolute;
+  width: 100%;
+  height: 80px;
+  text-align: center;
+  line-height: 80px;
+}
+.head-menu a[data-v-59d589ee] {
+  margin: 0 0 0 10px;
+  color: #666;
+  text-decoration: none;
+}
+.head-menu a[data-v-59d589ee]::after {
+  content: '/';
+  padding-left: 10px;
+}
+.head-menu a[data-v-59d589ee]:last-child::after {
+  content: '';
+  padding: 0;
+}
+.head-menu a.current[data-v-59d589ee] {
+  color: #42b983;
 }
 
 .ani-code-wrapper[data-v-6834452e] {
@@ -407,7 +427,25 @@ a {
 }
 
 .ani-logo-box[data-v-0bec26f5] {
+  position: relative;
+  display: inline-block;
   margin: 80px 0;
+  cursor: pointer;
+}
+.ani-logo-box .tips[data-v-0bec26f5] {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
+  line-height: 100px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+.ani-logo-box:hover .tips[data-v-0bec26f5] {
+  display: block;
 }
 .range-input-box[data-v-0bec26f5] {
   display: -ms-flexbox;
@@ -437,4 +475,56 @@ a {
   cursor: pointer;
 }
 
-/*# sourceMappingURL=app.948121fded795948334c146f87686bdf.css.map*/
+html[data-v-4356b9e5],
+body[data-v-4356b9e5],
+#app[data-v-4356b9e5],
+.css-builder-page[data-v-4356b9e5],
+.flex-wrapper[data-v-4356b9e5] {
+  height: 100%;
+  min-height: 600px;
+  text-align: center;
+}
+ul[data-v-4356b9e5] {
+  list-style-type: none;
+  padding: 0;
+}
+li[data-v-4356b9e5] {
+  display: inline-block;
+  margin: 0 10px;
+}
+a[data-v-4356b9e5] {
+  color: #42b983;
+}
+.css-builder-wrapper[data-v-4356b9e5] {
+  height: 100%;
+  background: #000 url(//quanfeng.tech/AnimateBuilder/dist/img/abtodo.f1f2656.jpg) no-repeat;
+  background-size: cover;
+}
+
+html[data-v-2bde4bf8],
+body[data-v-2bde4bf8],
+#app[data-v-2bde4bf8],
+.css-builder-page[data-v-2bde4bf8],
+.flex-wrapper[data-v-2bde4bf8] {
+  height: 100%;
+  min-height: 600px;
+  text-align: center;
+}
+ul[data-v-2bde4bf8] {
+  list-style-type: none;
+  padding: 0;
+}
+li[data-v-2bde4bf8] {
+  display: inline-block;
+  margin: 0 10px;
+}
+a[data-v-2bde4bf8] {
+  color: #42b983;
+}
+.css-builder-wrapper[data-v-2bde4bf8] {
+  height: 100%;
+  background: #000 url(//quanfeng.tech/AnimateBuilder/dist/img/abtodo.f1f2656.jpg) no-repeat;
+  background-size: cover;
+}
+
+/*# sourceMappingURL=app.732207d96e7837e0cabdc6d937ae501c.css.map*/

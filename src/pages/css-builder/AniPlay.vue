@@ -1,6 +1,7 @@
 <template>
  <div class="ani-play-wrapper">
     <div class="ani-logo-box">
+      <div class="tips">上传图片</div>
       <logo id="J_AniLogo"></logo>
     </div>
     <div class="param-box">
@@ -104,7 +105,26 @@ export default {
 @green: #42b983;
 @deep: #35495E;
 .ani-logo-box {
+  position: relative;
+  display: inline-block;
   margin: 80px 0;
+  cursor: pointer;
+  .tips {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    line-height: 100px;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .6);
+  }
+  &:hover .tips {
+    display: block;
+
+  }
 }
 .range-input-box {
   display: flex;

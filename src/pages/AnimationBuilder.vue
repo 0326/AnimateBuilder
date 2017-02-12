@@ -13,7 +13,7 @@ import AppMenu from '../components/AppMenu.vue'
 import cfooter from '../components/footer.vue'
 // console.log(anidata)
 export default {
-  name: 'page-css-picker',
+  name: 'page-animation-builder',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
