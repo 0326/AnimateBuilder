@@ -21,7 +21,7 @@ export default {
       const $0 = $(e.target)
       const aniType = $0.attr('type')
       const aniName = $0.text()
-      const aniCode = animation.getAniCode(aniType, aniName)
+      const aniCode = animation.getAniCode(aniType, aniName) + animation.aniBase
       util.aniCss($0, 'pulse')
       bus.$emit('cssBuilderAniSelected', {
         aniName,

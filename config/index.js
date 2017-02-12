@@ -7,7 +7,7 @@ module.exports = {
     index: path.resolve(__dirname, '../home.html'),
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: '',
-    assetsPublicPath: '//quanfeng.tech/AnimateBuilder/dist',
+    assetsPublicPath: '//quanfeng.tech/AnimateBuilder/dist/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

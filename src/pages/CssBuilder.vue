@@ -1,5 +1,5 @@
 <template>
-  <div class="css-builder-wrapper">
+  <div class="css-builder-page">
     <div class="head-menu">
       <a href="#">CSS Animation Picker</a> /
       <a href="#">CSS Animation Builder</a> /
@@ -44,7 +44,7 @@ export default {
 <style lang="less">
 @green: #42b983;
 @deep: #35495E;
-html, body, #app, .css-builder-wrapper, .flex-wrapper {
+html, body, #app, .css-builder-page, .flex-wrapper {
   height: 100%;
   min-height: 600px;
 }
@@ -62,7 +62,7 @@ a {
   color: @green;
 }
 
-.css-builder-wrapper {
+.css-builder-page {
   position: relative;
   margin: 0 auto;
   .head-menu {
@@ -94,8 +94,12 @@ a {
 .col-ani-code {
   background-color: rgb(39, 40, 34);
 }
+.col-ani-play {
+  text-align: center;
+}
 .col-ani-list {
   color: #fff;
+  text-align: center;
   background-color: @deep;
 }
 </style>

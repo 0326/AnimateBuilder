@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="page-home">
     <chead></chead>
     <cintro></cintro>
     <ani-picker></ani-picker>
@@ -43,7 +43,9 @@ li {
 a {
   color: #42b983;
 }
-
+.page-home {
+  text-align: center;
+}
 .btn-group {
   text-align: center;
   .btn {

@@ -10,6 +10,9 @@ li {
 a {
   color: #42b983;
 }
+.page-home {
+  text-align: center;
+}
 .btn-group {
   text-align: center;
 }
@@ -45,7 +48,7 @@ a[data-v-429f0bda] {
   text-decoration: none;
 }
 .head-wrapper[data-v-429f0bda] {
-  background: #000 url(//quanfeng.tech/AnimateBuilder/distimg/headbg.5b52162.jpg) no-repeat;
+  background: #000 url(//quanfeng.tech/AnimateBuilder/dist/img/headbg.5b52162.jpg) no-repeat;
   background-size: cover;
 }
 .head-content[data-v-429f0bda] {
@@ -276,7 +279,7 @@ a[data-v-476acb22] {
 html,
 body,
 #app,
-.css-builder-wrapper,
+.css-builder-page,
 .flex-wrapper {
   height: 100%;
   min-height: 600px;
@@ -292,17 +295,17 @@ li {
 a {
   color: #42b983;
 }
-.css-builder-wrapper {
+.css-builder-page {
   position: relative;
   margin: 0 auto;
 }
-.css-builder-wrapper .head-menu {
+.css-builder-page .head-menu {
   position: absolute;
   width: 100%;
   text-align: center;
   line-height: 80px;
 }
-.css-builder-wrapper .footer {
+.css-builder-page .footer {
   display: none;
 }
 .flex-wrapper {
@@ -326,18 +329,33 @@ a {
 .col-ani-code {
   background-color: #272822;
 }
+.col-ani-play {
+  text-align: center;
+}
 .col-ani-list {
   color: #fff;
+  text-align: center;
   background-color: #35495E;
 }
 
 .ani-code-wrapper[data-v-6834452e] {
+  position: relative;
   height: 100%;
   cursor: pointer;
 }
-.ani-code-wrapper #J_CssCode[data-v-6834452e] {
-  height: 100%;
-  text-align: left;
+.ani-code-wrapper .class-list[data-v-6834452e] {
+  position: absolute;
+  left: 0px;
+  top: 0;
+  width: 100%;
+  padding-left: 10px;
+  line-height: 36px;
+  border-bottom: 1px solid #fff;
+  color: #42b983;
+  background-color: #233;
+}
+.ani-code-wrapper .pre-code[data-v-6834452e] {
+  margin: 0 0 0 10px;
 }
 .ani-code-wrapper .language-css[data-v-6834452e] {
   margin: 0;
@@ -388,8 +406,35 @@ a {
   color: #fff;
 }
 
-.ani-logo-box {
+.ani-logo-box[data-v-0bec26f5] {
   margin: 80px 0;
 }
+.range-input-box[data-v-0bec26f5] {
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 16px;
+}
+.range-input-box.disabled[data-v-0bec26f5] {
+  color: #aaa;
+}
+.range-input-box.disabled input[data-v-0bec26f5] {
+  cursor: default;
+}
+.range-input-box label[data-v-0bec26f5] {
+  -ms-flex: 1;
+      flex: 1;
+  text-align: right;
+}
+.range-input-box span[data-v-0bec26f5] {
+  -ms-flex: 1;
+      flex: 1;
+  text-align: left;
+}
+.range-input-box input[data-v-0bec26f5] {
+  -ms-flex: 2;
+      flex: 2;
+  margin: 0 10px;
+  cursor: pointer;
+}
 
-/*# sourceMappingURL=app.a03bbe4cffeed703e728615a7a893c39.css.map*/
+/*# sourceMappingURL=app.948121fded795948334c146f87686bdf.css.map*/
