@@ -76,6 +76,7 @@ a {
     border: 1px solid #eee;
     height: 100%;
     overflow-y: scroll;
+    overflow-x: hidden;
   }
 }
 .ani-logo-box {

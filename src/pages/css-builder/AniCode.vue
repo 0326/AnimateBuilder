@@ -1,7 +1,7 @@
 <template>
   <div class="ani-code-wrapper">
     <div class="class-list">class="animated {{aniName}}"</div>
-    <pre class="pre-code" v-on:click="copyCode">
+    <pre class="pre-code" :data-clipboard-text="aniCode">
       <code id="J_CssCode" class="language-css"></code>
     </pre>
   </div>
@@ -9,14 +9,16 @@
 
 <script>
 import bus from '../../eventBus.js'
-// import util from '../../util.js'
+import Clipboard from 'clipboard'
+// import toast from '../../components/Toast.vue'
+import util from '../../util.js'
 
 export default {
   name: 'ani-code',
   data () {
     return {
       aniName: '',
-      aniCode: '\n\n/* this is css code, click to copy */'
+      aniCode: '\n\n/* this is css code, click to copy */\n/* 这里是css代码，点击复制到粘贴板 */'
     }
   },
   created () {
@@ -33,14 +35,28 @@ export default {
       let aniCode = Prism.highlight(this.aniCode, Prism.languages.css)
       $('#J_CssCode').html(aniCode)
     })
+
+    /* eslint-disable no-new */
+    new Clipboard('.pre-code').on('success', (e) => {
+      util.aniCss($('pre.pre-code'), this.aniName)
+      this.$toast('代码已复制', {
+        duration: 1000,
+        className: ['et-info', 'animated', 'fadeInLeft'],
+        horizontalPosition: 'left',
+        verticalPosition: 'bottom'
+      })
+      e.clearSelection()
+    }).on('error', function (e) {
+      console.log('该浏览器不支持自动复制，请手动复制到粘贴板')
+    })
   },
   mounted () {
     let aniCode = Prism.highlight(this.aniCode, Prism.languages.css)
     $('#J_CssCode').html(aniCode)
   },
   methods: {
-    copyCode (e) {
-      console.log('已copy代码')
+    copyCode () {
+
     },
     // 将用户调整过的值更新到代码
     injectCode (cssProp, value) {

@@ -5,7 +5,7 @@
       <li><a href="http://animateplus.com/easing-visualizer/#">Animate Plus</a></li>
       <li><a href="https://daneden.github.io/animate.css/#">Animate.css</a></li>
     </ul>
-    <h2>Friendly Links</h2>
+    <h2>Friend Links</h2>
     <ul>
       <li><a href="http://vuejs.org/" target="_blank">Vue.js</a></li>
       <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
@@ -14,8 +14,7 @@
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
     </ul>
     <div class="bottom-footer">
-      <p>Released under the MIT License</p>
-      <p>Copyright © 2016-2017 @0326</p>
+      <p>Copyright © 2016-2017 @动感小前端</p>
     </div>
   </div>
 </template>

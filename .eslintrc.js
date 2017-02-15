@@ -11,6 +11,7 @@ module.exports = {
   },
   globals: {
     $: true,
+    $vm: true,
     Velocity: true,
     Prism: true
   },

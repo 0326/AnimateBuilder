@@ -8,14 +8,14 @@
         <li><a href="#" target="_blank">ABOUT</a></li>
       </ul>
 
-      <logo></logo>
+      <logo class="animated bounceInUp" ></logo>
       <h1>Animation Builder</h1>
       <p>Inspired by Adobe Creative Cloud, Velocity.js and Vue.js.</p>
       <p>Making the animation workflow between UED and FE easier.</p>
 
       <div class="btn-group">
-        <a class="btn active" href="#">GET STARTED</a>
-        <a class="btn active" href="#">GITHUB</a>
+        <a class="btn active" href="#/css-picker">GET STARTED</a>
+        <a class="btn active" href="https://github.com/0326/AnimateBuilder">GITHUB</a>
       </div>
     </div>
   </div>
@@ -55,7 +55,7 @@ a {
   text-decoration: none;
 }
 .head-wrapper {
-  background: #000 url(../../assets/headbg.jpg) no-repeat;
+  background: #000 url(//7xp4vm.com1.z0.glb.clouddn.com/headbg.5b52162.jpg) no-repeat;
   background-size: cover;
 }
 .head-content {

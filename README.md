@@ -1,11 +1,13 @@
 # animate-builder
 Home page: <http://quanfeng.tech/AnimateBuilder/home.html>
-> animate builder based on Vue.js and Velocity.js
+> Animation Builder based on animation.css, Vue.js and Velocity.js.
 
 ![](http://7xp4vm.com1.z0.glb.clouddn.com/Animation_Builder.jpg)
 
+# How to use
+xxxx
 
-## Build Setup
+## Setup & Develop
 
 ``` bash
 # install dependencies

@@ -1,8 +1,12 @@
 <template>
  <div class="ani-play-wrapper">
     <div class="ani-logo-box">
-      <div class="tips">上传图片</div>
-      <logo id="J_AniLogo"></logo>
+      <div class="tips" v-bind:style="{lineHeight: canvasHeight + 'px'}">
+        上传图片
+        <input v-on:click="uploadImg" v-on:change="fileChange" type="file" accept="image/*">
+      </div>
+      <canvas v-show="imgFile" id="J_ImgCanvas" class="J_AniLogo img-canvas" width="100px" height="100px"></canvas>
+      <logo v-show="!imgFile" class="J_AniLogo"></logo>
     </div>
     <div class="param-box">
       <div v-for="(item, idx) in aniParams" class="range-input-box" :name="item.name">
@@ -24,6 +28,7 @@
 
 <script>
 import Logo from '../../components/Logo.vue'
+import FileInput from '../../components/FileInput.vue'
 import bus from '../../eventBus.js'
 import util from '../../util.js'
 
@@ -31,6 +36,9 @@ export default {
   name: 'ani-play',
   data () {
     return {
+      isLoadingFile: false,
+      imgFile: null,
+      canvasHeight: 100,
       msg: 'Welcome to Your Vue.js App',
       ananiName: '',
       aniParams: [{
@@ -50,9 +58,9 @@ export default {
         max: 10,
         value: '1'
       }, {
-        name: '无线循环',
+        name: '无限循环',
         type: 'checkbox',
-        cssProp: 'animation-infinie'
+        cssProp: 'animation-infinte'
       }]
     }
   },
@@ -60,12 +68,12 @@ export default {
     bus.$on('cssBuilderAniSelected', event => {
       this.aniName = event.aniName
       // 重新执行动画
-      util.aniCss($('#J_AniLogo'), this.aniName)
+      util.aniCss($('.J_AniLogo'), this.aniName)
       // 重新设置参数
       // TODO
     })
   },
-  components: { Logo },
+  components: { Logo, FileInput },
   methods: {
     parseCode () {
 
@@ -84,9 +92,9 @@ export default {
         value: cssVal
       })
 
-      $('#J_AniLogo').css(cssProp, cssVal)
-      util.aniCss($('#J_AniLogo'), this.aniName, () => {
-        $('#J_AniLogo').css(cssProp, '')
+      $('.J_AniLogo').css(cssProp, cssVal)
+      util.aniCss($('.J_AniLogo'), this.aniName, () => {
+        $('.J_AniLogo').css(cssProp, '')
       })
     },
     addPt (cssProp, value) {
@@ -95,7 +103,58 @@ export default {
         pt = 's'
       }
       return value + pt
-    }
+    },
+    uploadImg (e) {
+      if (this.isLoadingFile) {
+        console.log('正在打开...')
+        return e.preventDefault()
+      } else {
+        this.isLoadingFile = true
+        setTimeout(() => {
+          this.isLoadingFile = false
+        }, 10000)
+      }
+    },
+    fileChange (e) {
+      let file = e.target.files[0]
+      console.log('change..')
+      this.isLoadingFile = false
+
+      if (!file) {
+        return
+      }
+
+      if (!file.type.match('image.*')) {
+        return alert('请上传图片文件！')
+      }
+      let reader = new FileReader()
+      reader.readAsDataURL(file)
+      reader.onload = (obj) => {
+        this.renderImg(obj)
+      }
+    },
+    renderImg (obj) {
+      let canvasEl = document.getElementById('J_ImgCanvas')
+      let ctx = canvasEl.getContext('2d')
+      let currImg = new Image()
+      currImg.src = obj.target.result
+      currImg.onload = (e) => {
+        // 注意缩放大小，限制最大宽高200
+        if (currImg.width >= 200 && currImg.width >= currImg.height) {
+          canvasEl.width = 200
+          canvasEl.height = 200 * currImg.height / currImg.width
+        } else if (currImg.height > 200 && currImg.height > currImg.width) {
+          canvasEl.height = 200
+          canvasEl.width = 200 * currImg.width / currImg.height
+        } else {
+          canvasEl.width = currImg.width
+          canvasEl.height = currImg.height
+        }
+        ctx.drawImage(currImg, 0, 0, canvasEl.width, canvasEl.height)
+        this.imgFile = currImg
+        this.canvasHeight = canvasEl.height
+      }
+    } // end
   }
 }
 </script>
@@ -109,6 +168,9 @@ export default {
   display: inline-block;
   margin: 80px 0;
   cursor: pointer;
+  /*.img-canvas {
+    border: 6px solid @green;
+  }*/
   .tips {
     display: none;
     position: absolute;
@@ -120,6 +182,16 @@ export default {
     line-height: 100px;
     color: #fff;
     background-color: rgba(0, 0, 0, .6);
+    input {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      z-index: 2;
+      cursor: pointer;
+    }
   }
   &:hover .tips {
     display: block;

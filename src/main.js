@@ -2,12 +2,17 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import router from './router'
+import Toast from 'vue-easy-toast'
+
+Vue.use(Toast)
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
   template: `<div id="app">
-    <router-view></router-view>
+    <transition name="slide-left">
+      <router-view></router-view>
+    </transition>
   </div>`
 })
