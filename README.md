@@ -1,11 +1,14 @@
-# animate-builder
+# Animation Builder
 Home page: <http://quanfeng.tech/AnimateBuilder/home.html>
 > Animation Builder based on animation.css, Vue.js and Velocity.js.
 
 ![](http://7xp4vm.com1.z0.glb.clouddn.com/Animation_Builder.jpg)
 
 # How to use
-xxxx
+
+- [CSS Animation Picker](http://quanfeng.tech/AnimateBuilder/home.html#/css-picker)
+- [CSS Animation Builder](http://quanfeng.tech/AnimateBuilder/home.html#/css-builder)
+- [Animation Builder App](http://quanfeng.tech/AnimateBuilder/home.html#/app)
 
 ## Setup & Develop
 

@@ -38,7 +38,7 @@ export default {
 
     /* eslint-disable no-new */
     new Clipboard('.pre-code').on('success', (e) => {
-      util.aniCss($('pre.pre-code'), this.aniName)
+      util.aniCss($('pre.pre-code'), this.aniName.replace('infinite', ''))
       this.$toast('代码已复制', {
         duration: 1000,
         className: ['et-info', 'animated', 'fadeInLeft'],
@@ -61,9 +61,26 @@ export default {
     // 将用户调整过的值更新到代码
     injectCode (cssProp, value) {
       let ijCode = this.aniCode
+
+      if (cssProp === 'animation-infinite') {
+        if (value) {
+          this.aniName += ' infinite'
+          ijCode = ijCode.replace(/\n {2}animation-iteration-count: \d+;/, '')
+          ijCode += `\n.animated.infinite {\n  animation-iteration-count: infinite;\n}`
+        } else {
+          this.aniName = this.aniName.replace(' infinite', '')
+          ijCode = ijCode.replace(`\n.animated.infinite {\n  animation-iteration-count: infinite;\n}`, '')
+        }
+        return ijCode
+      }
+
+      // 在代码中匹配属性，匹配到直接替换，否则新增
       if (ijCode.indexOf(cssProp) > 0) {
         const reg = new RegExp(cssProp + '.+;', 'ig')
         ijCode = ijCode.replace(reg, cssProp + ': ' + value + ';')
+      } else {
+        const reg = /\n\.animated {\n/
+        ijCode = ijCode.replace(reg, '\n.animated {\n' + `  ${cssProp}: ${value};\n`)
       }
       return ijCode
     }

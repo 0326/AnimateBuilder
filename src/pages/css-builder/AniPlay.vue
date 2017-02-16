@@ -13,6 +13,7 @@
         <label>{{item.name}}</label>
         <input
           v-on:change="rangeChange"
+          :css-prop="item.cssProp"
           :type="item.type"
           :step="item.step"
           :idx="idx"
@@ -28,7 +29,6 @@
 
 <script>
 import Logo from '../../components/Logo.vue'
-import FileInput from '../../components/FileInput.vue'
 import bus from '../../eventBus.js'
 import util from '../../util.js'
 
@@ -40,7 +40,8 @@ export default {
       imgFile: null,
       canvasHeight: 100,
       msg: 'Welcome to Your Vue.js App',
-      ananiName: '',
+      aniName: '',
+      aniCssObj: { },
       aniParams: [{
         name: '动画时长',
         type: 'range',
@@ -53,56 +54,71 @@ export default {
         name: '循环次数',
         type: 'range',
         step: '1',
-        cssProp: 'animation-fff',
+        cssProp: 'animation-iteration-count',
         min: 1,
         max: 10,
         value: '1'
       }, {
         name: '无限循环',
         type: 'checkbox',
-        cssProp: 'animation-infinte'
+        cssProp: 'animation-infinite'
       }]
     }
   },
   created () {
     bus.$on('cssBuilderAniSelected', event => {
+      // 新动画选择后需要重置参数
+      this.aniCssObj = {}
+      this.aniParams.forEach((item) => {
+        if (item.type === 'range') {
+          item.value = 1
+        }
+      })
+
       this.aniName = event.aniName
       // 重新执行动画
       util.aniCss($('.J_AniLogo'), this.aniName)
-      // 重新设置参数
-      // TODO
     })
   },
-  components: { Logo, FileInput },
+  components: { Logo },
   methods: {
     parseCode () {
 
     },
     rangeChange (e) {
       const $0 = $(e.target)
-      let time = $0.val()
+      const $logo = $('.J_AniLogo')
+      let val = $0.val()
       let currInput = this.aniParams[$0.attr('idx')]
-      let cssProp = currInput.cssProp
-      let cssVal = this.addPt(cssProp, time)
 
-      currInput.value = time
+      let cssProp = currInput.cssProp
+      let cssVal = null
+      switch (cssProp) {
+        case 'animation-duration':
+          cssVal = val + 's'
+          break
+        case 'animation-iteration-count':
+          cssVal = val
+          break
+        case 'animation-infinite':
+          cssVal = e.target.checked
+          cssVal ? $('input[css-prop="animation-iteration-count"]')[0].disabled = true : $('input[css-prop="animation-iteration-count"]')[0].disabled = false
+          $logo.toggleClass('infinite')
+          break
+      }
+
+      currInput.value = val
 
       bus.$emit('cssBuilderAniParamChange', {
         cssProp: cssProp,
         value: cssVal
       })
 
-      $('.J_AniLogo').css(cssProp, cssVal)
-      util.aniCss($('.J_AniLogo'), this.aniName, () => {
-        $('.J_AniLogo').css(cssProp, '')
+      this.aniCssObj[cssProp] = cssVal
+      $logo.css(this.aniCssObj)
+      util.aniCss($logo, this.aniName, () => {
+        $logo.attr('style', '')
       })
-    },
-    addPt (cssProp, value) {
-      let pt = 's'
-      if (cssProp === 'animation-duration') {
-        pt = 's'
-      }
-      return value + pt
     },
     uploadImg (e) {
       if (this.isLoadingFile) {
